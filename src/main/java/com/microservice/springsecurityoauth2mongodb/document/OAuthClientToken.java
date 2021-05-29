@@ -12,26 +12,23 @@ import javax.validation.constraints.NotNull;
  *
  * @author aek
  * <p>
- * Description: stores OAuth2 access tokens.
+ * Description: stores OAuth2 tokens for retrieval by client applications
  */
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Document(collection = "oauth_access_token")
-public class OAuthAccessToken {
+@Document(collection = "oauth_client_token")
+public class OAuthClientToken {
 
-	@Id
-	private String id;
-	@NotNull
-	private String tokenId;
-	private OAuth2AccessToken token;
-	private String authenticationId;
-	private String username;
-	private String clientId;
-	private String authentication;
-	private String refreshToken;
-
+    @Id
+    private String id;
+    @NotNull
+    private String tokenId;
+    private OAuth2AccessToken token;
+    private String authenticationId;
+    private String username;
+    private String clientId;
 
 }

@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
 /**
@@ -13,7 +14,7 @@ import java.util.*;
  *
  * @author aek
  * <p>
- * Description:
+ * Description: Stores OAuth2 client details application
  */
 @Getter
 @Setter
@@ -27,7 +28,10 @@ public class OAuthClientDetails implements ClientDetails {
 
 	@Id
 	private String id;
+
+	@NotNull
 	private String clientId;
+
 	private Set<String> resourceIds = Collections.emptySet();
 	private boolean secretRequired;
 	private String clientSecret;
@@ -39,7 +43,7 @@ public class OAuthClientDetails implements ClientDetails {
 	private Integer accessTokenValiditySeconds;
 	private Integer refreshTokenValiditySeconds;
 	private boolean autoApprove;
-	private Map<String, Object> additionalInformation;
+	private Map<String, Object> additionalInformation = new LinkedHashMap<>();
 
 	public String getId() {
 		return id;
