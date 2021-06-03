@@ -1,0 +1,66 @@
+db.oauth_client_details.insert(
+[
+	{
+		"clientId" : "oauth_client_id",
+		"resourceIds" : [ "resource_id"],
+		"secretRequired" : true,
+		"clientSecret" : "$2a$10$vRo/pkgrVqQvtZPRE6NOcOcwjnojPzNCmzzco2bE5L9RxbGwG29I.",
+		"scoped" : true,
+		"scope" : [ "role_admin", "role_user"],
+		"authorizedGrantTypes" : [
+			"password",
+			"authorization_code",
+			"refresh_token",
+			"implicit"
+		],
+		"authorities" : [],
+		"accessTokenValiditySeconds" : NumberInt(3600),
+		"refreshTokenValiditySeconds" : NumberInt(21600),
+		"autoApprove" : false,
+		"additionalInformation" : {},
+		"_class" : "com.security.rad.springbootoauth2mongodb.domain.document.OAuthClientDetails"
+	}
+]
+);
+
+
+db.permission.insert(
+    [
+		{
+		    "_id" : ObjectId("60a26bea148fa508b1f1017f"),
+			"name" : "CREATE_SET_TECH",
+			"_class" : "com.microservice.springsecurityoauth2mongodb.document.Permission"
+		}
+    ]
+);
+
+db.group_role.insert(
+    [
+		{
+		    "_id" : ObjectId("60a26c7a66d02867993b04d2"),
+			"name" : "Administrator",
+			"code" : "MD_SET_ADMIN",
+			"description" : "Account setup",
+			"permissions" : ["CREATE_SET_TECH"],
+			"_class" : "com.microservice.springsecurityoauth2mongodb.document.GroupRole"
+		}
+    ]
+);
+
+db.app_user.insert(
+    [
+       {
+			"accountNonExpired" : false,
+			"accountNonLocked" : false,
+			"credentialsNonExpired" : false,
+			"email" : "boottechnologies.ci@gmail.com",
+			"enabled" : true,
+			"firstName" : "system",
+			"lastName" : "admin",
+			"password" : "$2a$04$EZzbSqieYfe/nFWfBWt2KeCdyq0UuDEM1ycFF8HzmlVR6sbsOnw7u",
+			"username" : "system",
+			"roles" : ["MD_SET_ADMIN"],
+			"_class" : "com.microservice.springsecurityoauth2mongodb.document.User"
+		} 
+    ]
+);
